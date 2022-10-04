@@ -5,24 +5,32 @@ pipeline {
   stages {
     
     stage("build") {
-      
       steps {
             echo 'Building the application ...'
             }
       }
     
-      stage("test") {
-            
+    stage("test") {   
       steps {
           echo 'Testing the application ...'
           }
       }
     
-      stage("deploy") {
-      
+    stage("deploy") {
       steps {
             echo 'Deploying the application ...'
             }
        }
+  }
+  post {
+    always {
+           echo 'Build completed ...'
+    }
+    success {
+            echo 'Build successful ...'
+    }
+    failure {
+            echo 'Build failed ...'
+    }
   }
 }
